@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
 var BootstrapMixin = require('./BootstrapMixin');
 var utils = require('./utils');
 var ValidComponentChildren = require('./ValidComponentChildren');
@@ -96,7 +95,7 @@ var SubNav = React.createClass({
     };
 
     return this.transferPropsTo(
-      <li className={classSet(classes)}>
+      <li className={utils.classSet(classes)}>
         <a
           href={this.props.href}
           title={this.props.title}

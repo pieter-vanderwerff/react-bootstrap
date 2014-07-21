@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
 var BootstrapMixin = require('./BootstrapMixin');
 var utils = require('./utils');
 
@@ -40,7 +39,7 @@ var Popover = React.createClass({
     arrowStyle['top'] = this.props.arrowOffsetTop;
 
     return (
-      <div className={classSet(classes)} style={style}>
+      <div className={utils.classSet(classes)} style={style}>
         <div className="arrow" style={arrowStyle} />
         {this.props.title ? this.renderTitle() : null}
         <div className="popover-content">

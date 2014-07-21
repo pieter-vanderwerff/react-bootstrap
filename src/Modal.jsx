@@ -1,10 +1,10 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
+var utils = require('./utils');
 var BootstrapMixin = require('./BootstrapMixin');
 var FadeMixin = require('./FadeMixin');
-var EventListener = require('react/lib/EventListener');
+var EventListener = require('./EventListener');
 
 
 // TODO:
@@ -52,10 +52,10 @@ var Modal = React.createClass({
         tabIndex="-1"
         role="dialog"
         style={modalStyle}
-        className={classSet(classes)}
+        className={utils.classSet(classes)}
         onClick={this.props.backdrop === true ? this.handleBackdropClick : null}
         ref="modal">
-        <div className={classSet(dialogClasses)}>
+        <div className={utils.classSet(dialogClasses)}>
           <div className="modal-content">
             {this.props.title ? this.renderHeader() : null}
             {this.props.children}
@@ -81,7 +81,7 @@ var Modal = React.createClass({
 
     return (
       <div>
-        <div className={classSet(classes)} ref="backdrop" onClick={onClick} />
+        <div className={utils.classSet(classes)} ref="backdrop" onClick={onClick} />
         {modal}
       </div>
     );

@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
 var Interpolate = require('./Interpolate');
 var BootstrapMixin = require('./BootstrapMixin');
 var utils = require('./utils');
@@ -48,7 +47,7 @@ var ProgressBar = React.createClass({
     if (!ValidComponentChildren.hasValidComponent(this.props.children)) {
       if (!this.props.isChild) {
         return this.transferPropsTo(
-          <div className={classSet(classes)}>
+          <div className={utils.classSet(classes)}>
             {this.renderProgressBar()}
           </div>
         );
@@ -59,7 +58,7 @@ var ProgressBar = React.createClass({
       }
     } else {
       return this.transferPropsTo(
-        <div className={classSet(classes)}>
+        <div className={utils.classSet(classes)}>
           {ValidComponentChildren.map(this.props.children, this.renderChildBar)}
         </div>
       );
@@ -94,7 +93,7 @@ var ProgressBar = React.createClass({
     }
 
     return (
-      <div className={classSet(this.getBsClassSet())} role="progressbar"
+      <div className={utils.classSet(this.getBsClassSet())} role="progressbar"
         style={{width: percentage + '%'}}
         aria-valuenow={this.props.now}
         aria-valuemin={this.props.min}

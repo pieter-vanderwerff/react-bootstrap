@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
 var BootstrapMixin = require('./BootstrapMixin');
 var CollapsableMixin = require('./CollapsableMixin');
 var utils = require('./utils');
@@ -50,7 +49,7 @@ var Nav = React.createClass({
     }
 
     return this.transferPropsTo(
-      <nav className={classSet(classes)}>
+      <nav className={utils.classSet(classes)}>
         {this.renderUl()}
       </nav>
     );
@@ -65,7 +64,7 @@ var Nav = React.createClass({
     classes['pull-right'] = this.props.pullRight;
 
     return (
-      <ul className={classSet(classes)} ref="ul">
+      <ul className={utils.classSet(classes)} ref="ul">
         {ValidComponentChildren.map(this.props.children, this.renderNavItem)}
       </ul>
     );

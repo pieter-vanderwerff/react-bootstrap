@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
+var utils = require('./utils');
 var BootstrapMixin = require('./BootstrapMixin');
 var DropdownStateMixin = require('./DropdownStateMixin');
 var Button = require('./Button');
@@ -58,7 +58,7 @@ var SplitButton = React.createClass({
     return (
       <ButtonGroup
         bsSize={this.props.bsSize}
-        className={classSet(groupClasses)}
+        className={utils.classSet(groupClasses)}
         id={this.props.id}>
         {button}
         {dropdownButton}

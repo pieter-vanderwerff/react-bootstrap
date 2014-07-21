@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
+var utils = require('./utils');
 var PropTypes = require('./PropTypes');
 
 var Table = React.createClass({
@@ -22,7 +22,7 @@ var Table = React.createClass({
       'table-hover': this.props.hover
     };
     var table = this.transferPropsTo(
-      <table className={classSet(classes)}>
+      <table className={utils.classSet(classes)}>
         {this.props.children}
       </table>
     );

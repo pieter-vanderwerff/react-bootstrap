@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
+var utils = require('./utils');
 var BootstrapMixin = require('./BootstrapMixin');
 
 
@@ -39,7 +39,7 @@ var Alert = React.createClass({
     classes['alert-dismissable'] = isDismissable;
 
     return this.transferPropsTo(
-      <div className={classSet(classes)}>
+      <div className={utils.classSet(classes)}>
         {isDismissable ? this.renderDismissButton() : null}
         {this.props.children}
       </div>

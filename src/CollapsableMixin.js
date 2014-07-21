@@ -1,5 +1,5 @@
 var React = require('react');
-var ReactTransitionEvents = require('react/lib/ReactTransitionEvents');
+var ReactTransitionEvents = require('./TransitionEvents');
 
 var CollapsableMixin = {
 

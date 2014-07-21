@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
+var utils = require('./utils');
 
 var Input = React.createClass({
   propTypes: {
@@ -106,7 +106,7 @@ var Input = React.createClass({
     };
 
     return this.props.hasFeedback ? (
-      <span className={classSet(classes)} key="icon" />
+      <span className={utils.classSet(classes)} key="icon" />
     ) : null;
   },
 
@@ -125,7 +125,7 @@ var Input = React.createClass({
     };
 
     return (
-      <div className={classSet(classes)} key="checkboxRadioWrapper">
+      <div className={utils.classSet(classes)} key="checkboxRadioWrapper">
         {children}
       </div>
     );
@@ -146,7 +146,7 @@ var Input = React.createClass({
     classes[this.props.labelClassName] = this.props.labelClassName;
 
     return this.props.label ? (
-      <label htmlFor={this.props.id} className={classSet(classes)} key="label">
+      <label htmlFor={this.props.id} className={utils.classSet(classes)} key="label">
         {children}
         {this.props.label}
       </label>
@@ -164,7 +164,7 @@ var Input = React.createClass({
     classes[this.props.groupClassName] = this.props.groupClassName;
 
     return (
-      <div className={classSet(classes)}>
+      <div className={utils.classSet(classes)}>
         {children}
       </div>
     );

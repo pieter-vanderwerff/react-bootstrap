@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
+var utils = require('./utils');
 
 var PageItem = React.createClass({
 
@@ -27,7 +27,7 @@ var PageItem = React.createClass({
 
     return this.transferPropsTo(
       <li
-        className={classSet(classes)}>
+        className={utils.classSet(classes)}>
         <a
           href={this.props.href}
           title={this.props.title}

@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
 var BootstrapMixin = require('./BootstrapMixin');
 var utils = require('./utils');
 var ValidComponentChildren = require('./ValidComponentChildren');
@@ -32,7 +31,7 @@ var PanelGroup = React.createClass({
 
   render: function () {
     return this.transferPropsTo(
-      <div className={classSet(this.getBsClassSet())}>
+      <div className={utils.classSet(this.getBsClassSet())}>
         {ValidComponentChildren.map(this.props.children, this.renderPanel)}
       </div>
     );

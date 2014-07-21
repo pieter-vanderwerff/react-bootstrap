@@ -1,4 +1,4 @@
-var cloneWithProps = require('react/lib/cloneWithProps');
+var React = require('react/addons');
 
 // From https://www.npmjs.org/package/extend
 var hasOwn = Object.prototype.hasOwnProperty;
@@ -95,19 +95,50 @@ module.exports = {
   },
 
   /**
-   * Sometimes you want to change the props of a child passed to you. Usually
-   * this is to add a CSS class.
-   *
-   * @param {object} child child component you'd like to clone
-   * @param {object} props props you'd like to modify. They will be merged
-   * as if you used `transferPropsTo()`.
-   * @return {object} a clone of child with props merged in.
+   * Reference to the React.addons cloneWithProps function.
+   * See: http://facebook.github.io/react/docs/clone-with-props.html
    */
-  cloneWithProps: function (child, props) {
-    return cloneWithProps(child, props);
-  },
+  cloneWithProps: React.addons.cloneWithProps,
 
   /**
+   * Reference to the React.addons classSet function.
+   * See: http://facebook.github.io/react/docs/class-name-manipulation.html
+   */
+  classSet: React.addons.classSet,
+
+  /**
+   * Shallow merges two structures by mutating the first parameter.
+   *
+   * @param {object} one Object to be merged into.
+   * @param {?object} two Optional object with properties to merge from.
+   */
+  mergeInto: function(one, two) {
+    if (two != null) {
+      for (var key in two) {
+        if (!two.hasOwnProperty(key)) {
+          continue;
+        }
+        one[key] = two[key];
+      }
+    }
+  },
+
+
+  /**
+   * Shallow merges two structures into a return value, without mutating either.
+   *
+   * @param {?object} one Optional object with properties to merge from.
+   * @param {?object} two Optional object with properties to merge from.
+   * @return {object} The shallow extension of one by two.
+   */
+  merge: function(one, two) {
+    var result = {};
+    this.mergeInto(result, one);
+    this.mergeInto(result, two);
+    return result;
+  },
+
+/**
    * From https://www.npmjs.org/package/extend
    * node-extend is a port of the classic extend() method from jQuery.
    * It behaves as you expect. It is simple, tried and true.

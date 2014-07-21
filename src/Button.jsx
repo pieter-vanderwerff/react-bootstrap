@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
+var utils = require('./utils');
 var BootstrapMixin = require('./BootstrapMixin');
 
 var Button = React.createClass({
@@ -47,7 +47,7 @@ var Button = React.createClass({
     return this.transferPropsTo(
       <a
         href={href}
-        className={classSet(classes)}
+        className={utils.classSet(classes)}
         role="button">
         {this.props.children}
       </a>
@@ -57,7 +57,7 @@ var Button = React.createClass({
   renderButton: function (classes) {
     return this.transferPropsTo(
       <button
-        className={classSet(classes)}>
+        className={utils.classSet(classes)}>
         {this.props.children}
       </button>
     );
@@ -69,7 +69,7 @@ var Button = React.createClass({
     };
 
     return (
-      <li className={classSet(liClasses)}>
+      <li className={utils.classSet(liClasses)}>
         {this.renderAnchor(classes)}
       </li>
     );

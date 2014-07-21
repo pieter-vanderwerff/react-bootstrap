@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
 var BootstrapMixin = require('./BootstrapMixin');
 var DropdownStateMixin = require('./DropdownStateMixin');
 var Button = require('./Button');
@@ -63,7 +62,7 @@ var DropdownButton = React.createClass({
     return (
       <ButtonGroup
         bsSize={this.props.bsSize}
-        className={classSet(groupClasses)}>
+        className={utils.classSet(groupClasses)}>
         {children}
       </ButtonGroup>
     );
@@ -77,7 +76,7 @@ var DropdownButton = React.createClass({
       };
 
     return (
-      <li className={classSet(classes)}>
+      <li className={utils.classSet(classes)}>
         {children}
       </li>
     );

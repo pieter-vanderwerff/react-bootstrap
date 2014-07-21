@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
 var BootstrapMixin = require('./BootstrapMixin');
 var utils = require('./utils');
 
@@ -38,7 +37,7 @@ var Tooltip = React.createClass({
     arrowStyle['top'] = this.props.arrowOffsetTop;
 
     return (
-        <div className={classSet(classes)} style={style}>
+        <div className={utils.classSet(classes)} style={style}>
           <div className="tooltip-arrow" style={arrowStyle} />
           <div className="tooltip-inner">
             {this.props.children}

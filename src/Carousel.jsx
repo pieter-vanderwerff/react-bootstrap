@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
 var BootstrapMixin = require('./BootstrapMixin');
 var utils = require('./utils');
 var ValidComponentChildren = require('./ValidComponentChildren');
@@ -144,7 +143,7 @@ var Carousel = React.createClass({
 
     return this.transferPropsTo(
       <div
-        className={classSet(classes)}
+        className={utils.classSet(classes)}
         onMouseOver={this.handleMouseOver}
         onMouseOut={this.handleMouseOut}>
         {this.props.indicators ? this.renderIndicators() : null}

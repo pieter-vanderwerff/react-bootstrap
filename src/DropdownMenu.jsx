@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
 var utils = require('./utils');
 var ValidComponentChildren = require('./ValidComponentChildren');
 
@@ -19,7 +18,7 @@ var DropdownMenu = React.createClass({
 
     return this.transferPropsTo(
         <ul
-          className={classSet(classes)}
+          className={utils.classSet(classes)}
           role="menu">
           {ValidComponentChildren.map(this.props.children, this.renderMenuItem)}
         </ul>

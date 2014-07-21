@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
+var utils = require('./utils');
 
 var MenuItem = React.createClass({
   propTypes: {
@@ -47,7 +47,7 @@ var MenuItem = React.createClass({
     }
 
     return this.transferPropsTo(
-      <li role="presentation" title={null} href={null} className={classSet(classes)}>
+      <li role="presentation" title={null} href={null} className={utils.classSet(classes)}>
         {children}
       </li>
     );

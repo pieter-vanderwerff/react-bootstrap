@@ -2,7 +2,7 @@
 
 var React = require('react');
 var domUtils = require('./domUtils');
-var EventListener = require('react/lib/EventListener');
+var EventListener = require('./EventListener');
 
 var AffixMixin = {
   propTypes: {

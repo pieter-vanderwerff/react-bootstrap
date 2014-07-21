@@ -2,7 +2,6 @@
 'use strict';
 
 var React = require('react');
-var invariant = require('react/lib/invariant');
 var utils = require('./utils');
 var ValidComponentChildren = require('./ValidComponentChildren');
 
@@ -14,6 +13,10 @@ var REGEXP = /\%\((.+?)\)s/;
 
 var Interpolate = React.createClass({
   displayName: 'Interpolate',
+
+  propTypes: {
+    format:   React.PropTypes.string
+  },
 
   getDefaultProps: function() {
     return { component: React.DOM.span };
@@ -29,8 +32,6 @@ var Interpolate = React.createClass({
     delete props.format;
     delete props.component;
     delete props.unsafe;
-
-    invariant(isString(format), 'Interpolate expects either a format string as only child or a `format` prop with a string value');
 
     if (unsafe) {
       var content = format.split(REGEXP).reduce(function(memo, match, index) {

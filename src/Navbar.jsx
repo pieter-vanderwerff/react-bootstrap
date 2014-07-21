@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
 var BootstrapMixin = require('./BootstrapMixin');
 var PropTypes = require('./PropTypes');
 var utils = require('./utils');
@@ -73,7 +72,7 @@ var Navbar = React.createClass({
     classes['navbar-inverse'] = this.props.inverse;
 
     return this.transferPropsTo(
-      <componentClass className={classSet(classes)}>
+      <componentClass className={utils.classSet(classes)}>
         <div className={this.props.fluid ? 'container-fluid' : 'container'}>
           {(this.props.brand || this.props.toggleButton || this.props.toggleNavKey) ? this.renderHeader() : null}
           {ValidComponentChildren.map(this.props.children, this.renderChild)}

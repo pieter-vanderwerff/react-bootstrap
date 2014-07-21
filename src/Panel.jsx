@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var classSet = require('react/lib/cx');
 var BootstrapMixin = require('./BootstrapMixin');
 var CollapsableMixin = require('./CollapsableMixin');
 var utils = require('./utils');
@@ -57,7 +56,7 @@ var Panel = React.createClass({
     classes['panel'] = true;
 
     return this.transferPropsTo(
-      <div className={classSet(classes)} id={this.props.collapsable ? null : this.props.id}>
+      <div className={utils.classSet(classes)} id={this.props.collapsable ? null : this.props.id}>
         {this.renderHeading()}
         {this.props.collapsable ? this.renderCollapsableBody() : this.renderBody()}
         {this.renderFooter()}
@@ -67,7 +66,7 @@ var Panel = React.createClass({
 
   renderCollapsableBody: function () {
     return (
-      <div className={classSet(this.getCollapsableClassSet('panel-collapse'))} id={this.props.id} ref="panel">
+      <div className={utils.classSet(this.getCollapsableClassSet('panel-collapse'))} id={this.props.id} ref="panel">
         {this.renderBody()}
       </div>
     );
