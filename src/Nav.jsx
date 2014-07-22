@@ -3,9 +3,11 @@
 var React = require('react');
 var BootstrapMixin = require('./BootstrapMixin');
 var CollapsableMixin = require('./CollapsableMixin');
-var utils = require('./utils');
-var domUtils = require('./domUtils');
-var ValidComponentChildren = require('./ValidComponentChildren');
+var classSet = require('./utils/classSet');
+var domUtils = require('./utils/domUtils');
+var cloneWithProps = require('./utils/cloneWithProps');
+var ValidComponentChildren = require('./utils/ValidComponentChildren');
+var createChainedFunction = require('./utils/createChainedFunction');
 
 
 var Nav = React.createClass({
@@ -49,7 +51,7 @@ var Nav = React.createClass({
     }
 
     return this.transferPropsTo(
-      <nav className={utils.classSet(classes)}>
+      <nav className={classSet(classes)}>
         {this.renderUl()}
       </nav>
     );
@@ -64,7 +66,7 @@ var Nav = React.createClass({
     classes['pull-right'] = this.props.pullRight;
 
     return (
-      <ul className={utils.classSet(classes)} ref="ul">
+      <ul className={classSet(classes)} ref="ul">
         {ValidComponentChildren.map(this.props.children, this.renderNavItem)}
       </ul>
     );
@@ -89,13 +91,13 @@ var Nav = React.createClass({
   },
 
   renderNavItem: function (child) {
-    return utils.cloneWithProps(
+    return cloneWithProps(
       child,
       {
         active: this.getChildActiveProp(child),
         activeKey: this.props.activeKey,
         activeHref: this.props.activeHref,
-        onSelect: utils.createChainedFunction(child.props.onSelect, this.props.onSelect),
+        onSelect: createChainedFunction(child.props.onSelect, this.props.onSelect),
         ref: child.props.ref,
         key: child.props.key,
         navItem: true

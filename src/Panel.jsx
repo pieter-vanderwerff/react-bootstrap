@@ -1,9 +1,10 @@
 /** @jsx React.DOM */
 
 var React = require('react');
+var classSet = require('./utils/classSet');
+var cloneWithProps = require('./utils/cloneWithProps');
 var BootstrapMixin = require('./BootstrapMixin');
 var CollapsableMixin = require('./CollapsableMixin');
-var utils = require('./utils');
 
 var Panel = React.createClass({
   mixins: [BootstrapMixin, CollapsableMixin],
@@ -56,7 +57,7 @@ var Panel = React.createClass({
     classes['panel'] = true;
 
     return this.transferPropsTo(
-      <div className={utils.classSet(classes)} id={this.props.collapsable ? null : this.props.id}>
+      <div className={classSet(classes)} id={this.props.collapsable ? null : this.props.id}>
         {this.renderHeading()}
         {this.props.collapsable ? this.renderCollapsableBody() : this.renderBody()}
         {this.renderFooter()}
@@ -66,7 +67,7 @@ var Panel = React.createClass({
 
   renderCollapsableBody: function () {
     return (
-      <div className={utils.classSet(this.getCollapsableClassSet('panel-collapse'))} id={this.props.id} ref="panel">
+      <div className={classSet(this.getCollapsableClassSet('panel-collapse'))} id={this.props.id} ref="panel">
         {this.renderBody()}
       </div>
     );
@@ -91,12 +92,12 @@ var Panel = React.createClass({
       header = this.props.collapsable ?
         this.renderCollapsableTitle(header) : header;
     } else if (this.props.collapsable) {
-      header = utils.cloneWithProps(header, {
+      header = cloneWithProps(header, {
         className: 'panel-title',
         children: this.renderAnchor(header.props.children)
       });
     } else {
-      header = utils.cloneWithProps(header, {
+      header = cloneWithProps(header, {
         className: 'panel-title'
       });
     }

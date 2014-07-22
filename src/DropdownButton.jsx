@@ -1,13 +1,15 @@
 /** @jsx React.DOM */
 
 var React = require('react');
+var classSet = require('./utils/classSet');
+var cloneWithProps = require('./utils/cloneWithProps');
+var createChainedFunction = require('./utils/createChainedFunction');
 var BootstrapMixin = require('./BootstrapMixin');
 var DropdownStateMixin = require('./DropdownStateMixin');
 var Button = require('./Button');
 var ButtonGroup = require('./ButtonGroup');
 var DropdownMenu = require('./DropdownMenu');
-var utils = require('./utils');
-var ValidComponentChildren = require('./ValidComponentChildren');
+var ValidComponentChildren = require('./utils/ValidComponentChildren');
 
 
 var DropdownButton = React.createClass({
@@ -62,7 +64,7 @@ var DropdownButton = React.createClass({
     return (
       <ButtonGroup
         bsSize={this.props.bsSize}
-        className={utils.classSet(groupClasses)}>
+        className={classSet(groupClasses)}>
         {children}
       </ButtonGroup>
     );
@@ -76,7 +78,7 @@ var DropdownButton = React.createClass({
       };
 
     return (
-      <li className={utils.classSet(classes)}>
+      <li className={classSet(classes)}>
         {children}
       </li>
     );
@@ -89,11 +91,11 @@ var DropdownButton = React.createClass({
     var handleOptionSelect = this.props.onSelect || child.props.onSelect ?
       this.handleOptionSelect : null;
 
-    return utils.cloneWithProps(
+    return cloneWithProps(
       child,
       {
         // Capture onSelect events
-        onSelect: utils.createChainedFunction(child.props.onSelect, handleOptionSelect),
+        onSelect: createChainedFunction(child.props.onSelect, handleOptionSelect),
 
         // Force special props to be transferred
         key: child.props.key,

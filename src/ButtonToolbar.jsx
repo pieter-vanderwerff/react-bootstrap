@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var utils = require('./utils');
+var classSet = require('./utils/classSet');
 var BootstrapMixin = require('./BootstrapMixin');
 var Button = require('./Button');
 
@@ -20,7 +20,7 @@ var ButtonGroup = React.createClass({
     return this.transferPropsTo(
       <div
         role="toolbar"
-        className={utils.classSet(classes)}>
+        className={classSet(classes)}>
         {this.props.children}
       </div>
     );

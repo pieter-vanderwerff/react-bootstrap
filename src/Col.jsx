@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var utils = require('./utils');
+var classSet = require('./utils/classSet');
 var PropTypes = require('./PropTypes');
 var constants = require('./constants');
 
@@ -66,7 +66,7 @@ var Col = React.createClass({
     }, this);
 
     return this.transferPropsTo(
-      <componentClass className={utils.classSet(classes)}>
+      <componentClass className={classSet(classes)}>
         {this.props.children}
       </componentClass>
     );

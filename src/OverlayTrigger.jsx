@@ -2,8 +2,10 @@
 
 var React = require('react');
 var OverlayMixin = require('./OverlayMixin');
-var domUtils = require('./domUtils');
-var utils = require('./utils');
+var domUtils = require('./utils/domUtils');
+var cloneWithProps = require('./utils/cloneWithProps');
+var createChainedFunction = require('./utils/createChainedFunction');
+var merge = require('./utils/merge');
 
 /**
  * Check if value one is inside or equal to the of value
@@ -75,7 +77,7 @@ var OverlayTrigger = React.createClass({
       return <span />;
     }
 
-    return utils.cloneWithProps(
+    return cloneWithProps(
       this.props.overlay,
       {
         onRequestHide: this.hide,
@@ -90,20 +92,20 @@ var OverlayTrigger = React.createClass({
     var props = {};
 
     if (isOneOf('click', this.props.trigger)) {
-      props.onClick = utils.createChainedFunction(this.toggle, this.props.onClick);
+      props.onClick = createChainedFunction(this.toggle, this.props.onClick);
     }
 
     if (isOneOf('hover', this.props.trigger)) {
-      props.onMouseOver = utils.createChainedFunction(this.handleDelayedShow, this.props.onMouseOver);
-      props.onMouseOut = utils.createChainedFunction(this.handleDelayedHide, this.props.onMouseOut);
+      props.onMouseOver = createChainedFunction(this.handleDelayedShow, this.props.onMouseOver);
+      props.onMouseOut = createChainedFunction(this.handleDelayedHide, this.props.onMouseOut);
     }
 
     if (isOneOf('focus', this.props.trigger)) {
-      props.onFocus = utils.createChainedFunction(this.handleDelayedShow, this.props.onFocus);
-      props.onBlur = utils.createChainedFunction(this.handleDelayedHide, this.props.onBlur);
+      props.onFocus = createChainedFunction(this.handleDelayedShow, this.props.onFocus);
+      props.onBlur = createChainedFunction(this.handleDelayedHide, this.props.onBlur);
     }
 
-    return utils.cloneWithProps(
+    return cloneWithProps(
       React.Children.only(this.props.children),
       props
     );
@@ -208,7 +210,7 @@ var OverlayTrigger = React.createClass({
     var offset = container.tagName == 'BODY' ?
       domUtils.getOffset(node) : domUtils.getPosition(node, container);
 
-    return utils.merge(offset, {
+    return merge(offset, {
       height: node.offsetHeight,
       width: node.offsetWidth
     });

@@ -1,4 +1,17 @@
 /**
+ * React EventListener.listen
+ *
+ * Copyright 2013-2014 Facebook, Inc.
+ * @licence https://github.com/facebook/react/blob/0.11-stable/LICENSE
+ *
+ * This file contains a modified version of:
+ *  https://github.com/facebook/react/blob/0.11-stable/src/vendor/stubs/EventListener.js
+ *
+ * TODO: remove in favour of solution provided by:
+ *  https://github.com/facebook/react/issues/285
+ */
+
+/**
  * Does not take into account specific nature of platform.
  */
 var EventListener = {
@@ -22,7 +35,7 @@ var EventListener = {
       target.attachEvent('on' + eventType, callback);
       return {
         remove: function() {
-          target.detachEvent(eventType, callback);
+          target.detachEvent('on' + eventType, callback);
         }
       };
     }

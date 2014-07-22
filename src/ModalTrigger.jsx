@@ -2,7 +2,8 @@
 
 var React = require('react');
 var OverlayMixin = require('./OverlayMixin');
-var utils = require('./utils');
+var cloneWithProps = require('./utils/cloneWithProps');
+var createChainedFunction = require('./utils/createChainedFunction');
 
 var ModalTrigger = React.createClass({
   mixins: [OverlayMixin],
@@ -40,7 +41,7 @@ var ModalTrigger = React.createClass({
       return <span />;
     }
 
-    return utils.cloneWithProps(
+    return cloneWithProps(
       this.props.modal,
       {
         onRequestHide: this.hide
@@ -50,10 +51,10 @@ var ModalTrigger = React.createClass({
 
   render: function () {
     var child = React.Children.only(this.props.children);
-    return utils.cloneWithProps(
+    return cloneWithProps(
       child,
       {
-        onClick: utils.createChainedFunction(child.props.onClick, this.toggle)
+        onClick: createChainedFunction(child.props.onClick, this.toggle)
       }
     );
   }
